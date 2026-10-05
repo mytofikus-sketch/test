@@ -1,21 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Подключаем созданный файл стилей -->
-    <link rel="stylesheet" href="css/1.css">
+    <title>Задание 1. HTML</title>
+    <style>
+        /* Простые стили, чтобы страница была похожа на макет */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 25px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .main-image {
+            display: block;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+
+        .link {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        /* Стили для таблицы (макета с котами) */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        .table-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Стили для списка */
+        ol,
+        ul {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: circle;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Заголовок страницы -->
-    <h1>Git</h1>
 
-    <!-- Текст с "лоремками" из примера -->
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus deleniti ar</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas saepe iusto a, debitis ex</p>
+    <!-- Header 1 -->
+    <h1>Header 1</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sunt quae quae excepturi ipsam obcaecati rerum
+        magni nemo sunt praesentium quae possimus, fuga incidunt numquam, corrupti illo voluptatum quibusdam
+        repudiandae. Sapiente sunt quae eos vel saepe fuga distinctio repellendus, omnis enim quia nihil iusto
+        necessitatibus quasi, pariatur exercitationem quibusdam repudiandae veniam voluptate, natus nostrum? Et nulla
+        voluptatem ipsum voluptate porro. Neque ea ex quidem maiores error vero architecto iure atque quibusdam, id
+        delectus. Odio iust non magnam repudiandae quos rerum quod ab velit commodi voluptate cupiditate itaque, illum
+        nisi auh.</p>
+
+    <!-- Header 2 -->
+    <h2>Header 2</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quaerat repellat deserunt voluptate quas. Animi
+        incidunt, cum et quis odit vero, quo aspernatur iure pariatur quas fugit provident aliquod. Ratione.</p>
+
+    <!-- Картинка с котом -->
+    <!-- ЗАМЕНИТЕ 'img/cat1.png' на имя вашего файла -->
+    <img src="img/cat1.png" alt="Кот" class="main-image">
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, ducimus qui atque omnis deserunt optio eveniet
+        facere accusantium quam architecto eius vel veritatis consequuntur sunt voluptatum est, perspiciatis commodi
+        eumque!</p>
+
+    <!-- Ссылка на вторую страницу -->
+    <p><a href="page2.html" class="link">Next page</a></p>
+
+    <!-- Инструкция для VS Code -->
+    <p style="background: #f0f0f0; padding: 10px; border-left: 4px solid #ccc;">
+        Для ввода текста lorem в редакторе VSC введите в разметке команду <strong>p>lorem</strong>
+    </p>
+
+    <!-- Header 1 (второй) -->
+    <h1>Header 1</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates autem explicabo iure aperiam rerum iste
+        eveniet minus sit, sunt delectus dolores aliquid quam inventore, a alias ea non sequi dolor.</p>
+
+    <!-- Макет с котами (таблица) -->
+    <table>
+        <tr>
+            <!-- Левая большая ячейка с картинкой -->
+            <td rowspan="2" style="width: 60%;">
+                <!-- ЗАМЕНИТЕ 'img/cat2.png' на имя вашего файла -->
+                <img src="img/cat2.png" alt="Два кота" class="table-img">
+            </td>
+            <!-- Правая верхняя ячейка -->
+            <td>Cell 1</td>
+        </tr>
+        <tr>
+            <!-- Правая нижняя ячейка (под Cell 1) -->
+            <td>Cell 2</td>
+        </tr>
+        <tr>
+            <!-- Нижние ячейки -->
+            <td>Cell 3</td>
+            <td>Cell 4</td>
+        </tr>
+    </table>
+
+    <!-- Header 2 (второй) -->
+    <h2>Header 2</h2>
+
+    <!-- Нумерованный список с вложенностью -->
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2
+            <ul>
+                <li>Subitem 1</li>
+                <li>Subitem 2</li>
+                <li>Subitem 3</li>
+            </ul>
+        </li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ol>
+
 </body>
 
 </html>
