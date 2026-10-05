@@ -1,0 +1,90 @@
+/* ===== КЛАССЫ ДЛЯ ШРИФТА И РАЗМЕРА ===== */
+.font-small {
+    font-size: 12px;
+}
+
+.font-medium {
+    font-size: 16px;
+}
+
+.font-large {
+    font-size: 24px;
+}
+
+/* ===== КЛАССЫ ДЛЯ ЖИРНОСТИ ===== */
+.bold {
+    font-weight: bold;
+}
+
+/* ===== КЛАССЫ ДЛЯ ВЫРАВНИВАНИЯ ===== */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* ===== КЛАССЫ ДЛЯ ЦВЕТА ===== */
+.color-blue {
+    color: #1a3a8f;
+}
+
+.color-red {
+    color: #b22222;
+}
+
+/* ===== КЛАССЫ ДЛЯ ОТСТУПОВ ===== */
+.margin-top {
+    margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+/* ===== КЛАССЫ ДЛЯ ССЫЛОК ===== */
+.link-style {
+    color: #0055cc;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* ===== ОБЩИЕ СТИЛИ ДЛЯ СТРАНИЦЫ ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f0e6;
+    background-image: url('../img/fon.jpg');
+    /* Обои справа (если есть) */
+    background-repeat: repeat-y;
+    background-position: right top;
+    margin: 20px;
+    padding-right: 150px;
+    /* Отступ справа, чтобы текст не заходил на обои */
+}
+
+/* ===== СТИЛИ ДЛЯ ТАБЛИЦЫ ===== */
+table {
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+td {
+    border: 1px solid #999;
+    padding: 10px;
+    vertical-align: top;
+}
+
+/* ===== СТИЛИ ДЛЯ СПИСКА ===== */
+ol {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+ul {
+    list-style-type: circle;
+}
