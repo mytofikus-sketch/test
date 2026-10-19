@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тайны гепардов</title>
 
-    <!-- Подключение FontAwesome (иконки для подвала) -->
+    <!-- Подключение FontAwesome (иконки) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -21,8 +21,8 @@
             background-color: #111;
             /* Темный фон */
             color: #ccc;
-            font-family: 'Times New Roman', Times, serif;
             /* Шрифт с засечками, как в макете */
+            font-family: 'Times New Roman', Times, serif;
             overflow-x: hidden;
         }
 
@@ -55,7 +55,6 @@
             text-decoration: none;
             font-size: 18px;
             transition: color 0.3s, text-shadow 0.3s;
-            /* Плавный переход */
         }
 
         /* Подсветка при наведении */
@@ -74,26 +73,30 @@
 
         /* --- ГЛАВНЫЙ ЭКРАН (БАННЕР) --- */
         .hero {
-            background: url('img/gepard-bg.jpg') no-repeat center center;
+            /* Добавил затемнение фона (linear-gradient), чтобы белый текст читался лучше */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/gepard-bg.jpg') no-repeat center center;
             background-size: cover;
             width: 100%;
-            aspect-ratio: 3/1;
-            /* Пропорция 3/1 */
+            /* Вместо жесткого aspect-ratio используем min-height, чтобы картинка не ломалась */
+            min-height: 400px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 50px 20px;
         }
 
         /* Объемный заголовок */
         .hero h1 {
-            font-size: calc(1.5em + 3vw);
+            font-size: calc(1.5em + 4vw);
             /* Адаптивный размер */
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 5px;
-            /* Объем создается с помощью box-shadow */
+            text-align: center;
+            /* Центрируем текст */
+            /* Объем создается с помощью text-shadow (в задании написано box-shadow, но для текста правильнее text-shadow) */
             text-shadow: 3px 3px 0px #333,
-                6px 6px 10px rgba(0, 0, 0, 0.8);
+                6px 6px 15px rgba(0, 0, 0, 0.9);
         }
 
         /* --- ШАХМАТНАЯ ВЕРСТКА --- */
@@ -101,43 +104,48 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 0;
-            gap: 30px;
+            padding: 60px 0;
+            gap: 40px;
         }
 
         .line {
             display: flex;
             width: 80vw;
-            /* Ширина блока */
-            gap: 20px;
+            /* Ширина блока из задания */
+            gap: 30px;
             align-items: center;
         }
 
         /* Блоки текста и картинок */
         .text-block {
             flex: 1 1 50%;
+            /* 50% ширины */
             font-size: calc(0.5em + 1vw);
             /* Адаптивный шрифт из задания */
-            line-height: 1.6;
+            line-height: 1.8;
             text-align: justify;
+            color: #ddd;
         }
 
         .img-block {
             flex: 1 1 50%;
+            /* 50% ширины */
             display: flex;
             justify-content: center;
         }
 
         .img-block img {
             width: 100%;
-            height: auto;
+            /* Пропорция из задания 1.5/1 */
             aspect-ratio: 1.5/1;
-            /* Пропорция 1.5/1 */
             object-fit: cover;
-            /* Картинка заполняет блок */
+            /* Картинка заполняет блок без искажений */
+            object-position: center;
             border-radius: 15px;
             /* Скругление углов */
             border: 2px solid #333;
+            /* Ограничиваем максимальную высоту, чтобы картинки не были гигантскими */
+            max-height: 400px;
         }
 
         /* --- ПОДВАЛ --- */
@@ -160,6 +168,7 @@
             display: flex;
             gap: 15px;
             font-size: 24px;
+            align-items: center;
         }
 
         .icon-item a {
@@ -179,20 +188,21 @@
         .footer-column {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
         }
 
         .footer-column a {
-            color: #ccc;
+            color: #aaa;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .footer-column a:hover {
             color: #fff;
         }
 
-        /* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+        /* --- МОБИЛЬНАЯ ВЕРСИЯ (Адаптив) --- */
         @media (max-width: 768px) {
             header {
                 padding: 10px 20px;
@@ -215,6 +225,7 @@
                 background-color: #000;
                 padding: 20px;
                 text-align: center;
+                z-index: 10;
             }
 
             /* Класс для открытия меню через JS */
@@ -228,6 +239,11 @@
                 width: 90vw;
             }
 
+            /* На мобильных меняем порядок: текст, потом картинка (чтобы не было путаницы) */
+            .line .img-block {
+                order: -1;
+            }
+
             .text-block,
             .img-block {
                 flex: 1 1 100%;
@@ -236,6 +252,7 @@
             .img-block img {
                 aspect-ratio: auto;
                 /* Убираем жесткую пропорцию на мобильных */
+                max-height: 300px;
             }
 
             .footer-content {
@@ -246,6 +263,7 @@
             .icons,
             .footer-links {
                 justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -255,6 +273,7 @@
 
     <!-- ШАПКА -->
     <header>
+        <!-- Убедитесь, что картинка логотипа лежит в папке img -->
         <img src="img/logo.jpg" alt="Логотип" class="logo-img">
 
         <nav>
@@ -294,7 +313,7 @@
             </div>
         </div>
 
-        <!-- Блок 2: Картинка слева, Текст справа (Шахматный порядок) -->
+        <!-- Блок 2: Картинка слева, Текст справа -->
         <div class="line">
             <div class="img-block">
                 <img src="img/gepard2.jpg" alt="Гепард 2">
