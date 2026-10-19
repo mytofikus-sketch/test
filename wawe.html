@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAWE - Школа серфинга</title>
+    <style>
+        /* --- СБРОС И БАЗОВЫЕ СТИЛИ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Georgia', serif;
+            /* Шрифт с засечками, как в макете */
+            color: #013c3c;
+            /* Темно-зеленый цвет из макета */
+        }
+
+        /* --- ШАПКА --- */
+        header {
+            position: absolute;
+            /* Наложение на фон */
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: center;
+            /* Меню по центру */
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+        .hero {
+            /* Замените на свою картинку */
+            background-image: url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 120px;
+            /* Огромный заголовок */
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* --- БЛОК О ШКОЛЕ --- */
+        .about-school {
+            padding: 100px 10%;
+            background-color: #fff;
+        }
+
+        .about-school h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .text-columns {
+            display: flex;
+            gap: 40px;
+        }
+
+        .column {
+            flex: 1;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* --- БЛОК ПОКОРЯЙ ВЕРШИНЫ --- */
+        .conquer {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .conquer-text {
+            flex: 1;
+            padding: 100px 10%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .conquer-text h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .conquer-text p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .conquer-image {
+            flex: 1;
+            /* Замените на свою картинку */
+            background-image: url('img/surfer-right.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 600px;
+            /* Минимальная высота */
+        }
+
+        /* --- БЛОК КОМАНДА --- */
+        .team {
+            padding: 100px 10%;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .team-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            flex: 1;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* --- ПОДВАЛ (WAWE) --- */
+        .footer-logo {
+            background-color: #00c4b4;
+            /* Бирюзовый цвет */
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .footer-logo h2 {
+            font-size: 150px;
+            color: #013c3c;
+            letter-spacing: 15px;
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .text-columns,
+            .conquer,
+            .team-cards {
+                flex-direction: column;
+            }
+
+            .conquer-image {
+                min-height: 400px;
+            }
+
+            .footer-logo h2 {
+                font-size: 60px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Шапка с навигацией -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">Стоимость</a></li>
+                <li><a href="#">Блог</a></li>
+                <li><a href="#">Команда</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>WAWE</h1>
+        <p>Школа серфинга на канарских Островах</p>
+    </section>
+
+    <!-- Блок О школе -->
+    <section class="about-school">
+        <h2>О ШКОЛЕ, О СЕРФИНГЕ, О КАНАРАХ</h2>
+        <div class="text-columns">
+            <div class="column">
+                <p>Канарские острова не случайно называют европейскими Гавайями – это идеальное место для поклонников
+                    серфинга: стабильный теплый ветер круглый год, песчаные пляжи, километры нетронутых просторов и
+                    прозрачное море. А настоящей Меккой для серфингистов становится Фуэртевентура – второй по величине
+                    остров архипелага.</p>
+                <br>
+                <p>Именно здесь лучшее в Испании место, в котором можно пройти обучение серфингу. Кроме того, что зимой
+                    и осенью сюда приходят огромные атлантические волны, Фуэртевентура может похвастать и множеством
+                    мелководных спокойных лагун, отлично подходящих для обучения начинающих серфингистов.</p>
+            </div>
+            <div class="column">
+                <p>Пока что вы только хотите понять, что такое серфинг, или уже испытали всю прелесть катания на волнах,
+                    но желаете поднять свой уровень? Наша школа серфинга сможет предложить обучение для любого уровня
+                    подготовки.</p>
+                <br>
+                <p>Четыре часа увлекательных занятий в день помогут вам уверенно покорять волны, почувствовать себя
+                    настоящим серфингистом.</p>
+                <br>
+                <p>Сначала мы определяем уровень катания и физической подготовки и только потом составляем программу
+                    подготовки. И можем заверить, что после того, как закончится обучение, вы не только получите массу
+                    великолепных ощущений, но и это уровень поднимется на новую ступень.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок Покоряй вершины -->
+    <section class="conquer">
+        <div class="conquer-text">
+            <h2>ПОКОРЯЙ ВЕРШИНЫ</h2>
+            <p>Преподаватели нашей школы серфинга в числе лучших серферов на Канарских островах. Среди них - чемпион
+                Европы по лонгборду, который с радостью поделится опытом как с новичками, так и более опытными
+                серферами. Все члены преподавательского состава являются сертифицированными членами Федерации серфинга
+                Канарских островов. Некоторые из них знают русский язык, что определенно позиционирует нас как русскую
+                школу серфинга за границей!</p>
+            <p>Весь тренерский состав регулярно участвует в семинарах и курсах повышения квалификации, которые
+                проводятся по всему миру различными известными серф-клубами и федерациями. Поэтому в нашей школе
+                серфинга вы можете быть спокойны: вас обучают лучшие тренеры!</p>
+            <p>Методика обучения серфингу рассчитана как на новичков, на серферов среднего уровня, так и на серферов
+                уровня ТОП. Тренеры находят подход к каждому, несмотря на то, что обучение серфингу в нашей школе
+                производится в группах. Однако, мы предлагаем персональные уроки серфинга - только вы и тренер!</p>
+        </div>
+        <div class="conquer-image"></div>
+    </section>
+
+    <!-- Блок Команда -->
+    <section class="team">
+        <div class="team-cards">
+            <div class="team-member">
+                <img src="img/mike.jpg" alt="Mike">
+                <h3>Mike</h3>
+                <p>Главный инструктор</p>
+            </div>
+            <div class="team-member">
+                <img src="img/mary.jpg" alt="Mary">
+                <h3>Mary</h3>
+                <p>инструктор</p>
+            </div>
+            <div class="team-member">
+                <img src="img/olga.jpg" alt="Ольга">
+                <h3>Ольга</h3>
+                <p>инструктор</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал с логотипом -->
+    <footer class="footer-logo">
+        <h2>WAWE</h2>
+    </footer>
+
+</body>
+
+</html>
