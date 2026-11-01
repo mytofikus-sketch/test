@@ -1,0 +1,163 @@
+// --- 1. ПЕРЕМЕННЫЕ ---
+$font: 'Arial', sans-serif;
+$primary-blue: #007bff;
+$dark-text: #333;
+$list-img-circle: "smm.jpg", "email.png", "ya-direct.png", "seo.jpg", "cross.jpg";
+
+// --- 2. МИКСИНЫ ---
+@mixin flexible() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// --- БАЗОВЫЕ СТИЛИ ---
+body {
+    font-family: $font;
+    color: $dark-text;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Шапка (Header)
+header {
+    @include flexible();
+    justify-content: space-between;
+    padding: 20px 50px;
+
+    .logo {
+        width: 100px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+
+        li a {
+            text-decoration: none;
+            color: $dark-text;
+            font-weight: bold;
+
+            &:hover {
+                color: $primary-blue;
+            }
+        }
+    }
+}
+
+// Баннер (Marketing)
+.banner {
+    width: 100%;
+    height: 400px;
+    background: url("../img/banner.jpg") no-repeat center center;
+    background-size: cover;
+    @include flexible();
+
+    h1 {
+        font-size: 3rem;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+// --- 3. ЦИКЛ ДЛЯ ШАХМАТНОЙ СЕТКИ ---
+@for $i from 1 to 5 {
+    .repeat-lines#{$i} {
+        display: flex;
+        height: auto;
+        margin: 30px;
+
+        .text,
+        .img {
+            flex: 1 1 50%;
+        }
+
+        .text {
+            margin: 0 30px;
+            font-family: $font;
+            font-size: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .img {
+            aspect-ratio: 2 / 1.5;
+            object-fit: contain;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        // Четные строки разворачиваем
+        @if $i % 2==0 {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+// --- 4. ЦИКЛ ДЛЯ КАРТИНОК ВНИЗУ (КРУГИ) ---
+$j: 1;
+
+.circle-line {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    background-color: #f4f4f4;
+
+    @each $i in $list-img-circle {
+        .circle#{$j} {
+            aspect-ratio: 1 / 1;
+            flex: 0 0 15vw;
+            background: url("../img/" + $i) no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            border: 3px solid $primary-blue;
+            box-shadow: 2px 2px 3px #66FFFF;
+        }
+
+        $j: $j + 1;
+    }
+}
+
+// --- 5. МОБИЛЬНАЯ ВЕРСИЯ ---
+@media (max-width: 800px) {
+    header {
+        display: none; // Скрываем меню на мобильных
+    }
+
+    .banner h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    @for $i from 1 to 5 {
+        .repeat-lines#{$i} {
+            display: flex;
+            flex-direction: column; // Блоки встают друг под другом
+            margin: 30px;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 10px;
+
+            .text,
+            .img {
+                width: 100%;
+            }
+
+            .text {
+                margin: 20px 0;
+            }
+        }
+    }
+}

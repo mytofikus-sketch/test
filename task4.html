@@ -4,374 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тайны гепардов</title>
-
-    <!-- Подключение FontAwesome (иконки) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        /* --- БАЗОВЫЕ СТИЛИ --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #111;
-            /* Темный фон */
-            color: #ccc;
-            /* Шрифт с засечками, как в макете */
-            font-family: 'Times New Roman', Times, serif;
-            overflow-x: hidden;
-        }
-
-        /* --- ШАПКА --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 50px;
-            background-color: #000;
-        }
-
-        .logo-img {
-            width: 150px;
-            height: 75px;
-            /* Пропорция 2/1 */
-            object-fit: cover;
-            border-radius: 10px;
-            /* Скругление углов */
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        /* Подсветка при наведении */
-        nav a:hover {
-            color: #ffcc00;
-            text-shadow: 0 0 10px #ffcc00;
-        }
-
-        /* Иконка гамбургера (скрыта на ПК) */
-        .burger {
-            display: none;
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        /* --- ГЛАВНЫЙ ЭКРАН (БАННЕР) --- */
-        .hero {
-            /* Добавил затемнение фона (linear-gradient), чтобы белый текст читался лучше */
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/gepard-bg.jpg') no-repeat center center;
-            background-size: cover;
-            width: 100%;
-            /* Вместо жесткого aspect-ratio используем min-height, чтобы картинка не ломалась */
-            min-height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 50px 20px;
-        }
-
-        /* Объемный заголовок */
-        .hero h1 {
-            font-size: calc(1.5em + 4vw);
-            /* Адаптивный размер */
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-align: center;
-            /* Центрируем текст */
-            /* Объем создается с помощью text-shadow (в задании написано box-shadow, но для текста правильнее text-shadow) */
-            text-shadow: 3px 3px 0px #333,
-                6px 6px 15px rgba(0, 0, 0, 0.9);
-        }
-
-        /* --- ШАХМАТНАЯ ВЕРСТКА --- */
-        .chess-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 0;
-            gap: 40px;
-        }
-
-        .line {
-            display: flex;
-            width: 80vw;
-            /* Ширина блока из задания */
-            gap: 30px;
-            align-items: center;
-        }
-
-        /* Блоки текста и картинок */
-        .text-block {
-            flex: 1 1 50%;
-            /* 50% ширины */
-            font-size: calc(0.5em + 1vw);
-            /* Адаптивный шрифт из задания */
-            line-height: 1.8;
-            text-align: justify;
-            color: #ddd;
-        }
-
-        .img-block {
-            flex: 1 1 50%;
-            /* 50% ширины */
-            display: flex;
-            justify-content: center;
-        }
-
-        .img-block img {
-            width: 100%;
-            /* Пропорция из задания 1.5/1 */
-            aspect-ratio: 1.5/1;
-            object-fit: cover;
-            /* Картинка заполняет блок без искажений */
-            object-position: center;
-            border-radius: 15px;
-            /* Скругление углов */
-            border: 2px solid #333;
-            /* Ограничиваем максимальную высоту, чтобы картинки не были гигантскими */
-            max-height: 400px;
-        }
-
-        /* --- ПОДВАЛ --- */
-        footer {
-            background-color: #222;
-            padding: 40px 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .icons {
-            display: flex;
-            gap: 15px;
-            font-size: 24px;
-            align-items: center;
-        }
-
-        .icon-item a {
-            color: #fff;
-            transition: color 0.3s;
-        }
-
-        .icon-item a:hover {
-            color: #ffcc00;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 50px;
-        }
-
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .footer-column a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: #fff;
-        }
-
-        /* --- МОБИЛЬНАЯ ВЕРСИЯ (Адаптив) --- */
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 20px;
-                position: relative;
-            }
-
-            .burger {
-                display: block;
-                /* Показываем гамбургер */
-            }
-
-            nav ul {
-                display: none;
-                /* Скрываем меню */
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #000;
-                padding: 20px;
-                text-align: center;
-                z-index: 10;
-            }
-
-            /* Класс для открытия меню через JS */
-            nav ul.active {
-                display: flex;
-            }
-
-            .line {
-                flex-direction: column;
-                /* Блоки встают друг под другом */
-                width: 90vw;
-            }
-
-            /* На мобильных меняем порядок: текст, потом картинка (чтобы не было путаницы) */
-            .line .img-block {
-                order: -1;
-            }
-
-            .text-block,
-            .img-block {
-                flex: 1 1 100%;
-            }
-
-            .img-block img {
-                aspect-ratio: auto;
-                /* Убираем жесткую пропорцию на мобильных */
-                max-height: 300px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .icons,
-            .footer-links {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-        }
-    </style>
+    <title>Маркетинг ИТ - SASS</title>
+    <!-- Подключаем СКОМПИЛИРОВАННЫЙ CSS файл, который создастся позже -->
+    <link rel="stylesheet" href="task5.css">
 </head>
 
 <body>
 
-    <!-- ШАПКА -->
     <header>
-        <!-- Убедитесь, что картинка логотипа лежит в папке img -->
-        <img src="img/logo.jpg" alt="Логотип" class="logo-img">
-
+        <div class="logo"><img src="img/logo.png" alt="Логотип"></div>
         <nav>
-            <ul id="nav-menu">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Links</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacts</a></li>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">Кейсы</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
         </nav>
-
-        <!-- Иконка гамбургера -->
-        <div class="burger" id="burger">&#9776;</div>
     </header>
 
-    <!-- ГЛАВНЫЙ ЭКРАН -->
-    <section class="hero">
-        <h1>Тайны гепардов</h1>
-    </section>
+    <div class="banner">
+        <h1>Маркетинг ИТ</h1>
+    </div>
 
-    <!-- ШАХМАТКА -->
-    <section class="chess-container">
-        <!-- Блок 1: Текст слева, Картинка справа -->
-        <div class="line">
-            <div class="text-block">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat veritatis fuga aliquid quis odit
-                    maiores nostrum necessitatibus maxime non! Molestias sit quibusdam quo quasi sequi hic nesciunt
-                    eaque facere velit.</p>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt pariatur quam vero, nesciunt ea quo
-                    cumque similique odio fugiat ipsam delectus neque exercitationem! Doloremque labore eaque nobis
-                    consectetur omnis? Accusantium?</p>
-            </div>
-            <div class="img-block">
-                <img src="img/gepard1.jpg" alt="Гепард 1">
-            </div>
+    <div class="repeat-lines1">
+        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus obcaecati voluptatem.
         </div>
+        <div class="img"><img src="img/hand-1.jpg" alt=""></div>
+    </div>
 
-        <!-- Блок 2: Картинка слева, Текст справа -->
-        <div class="line">
-            <div class="img-block">
-                <img src="img/gepard2.jpg" alt="Гепард 2">
-            </div>
-            <div class="text-block">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat veritatis fuga aliquid quis odit
-                    maiores nostrum necessitatibus maxime non! Molestias sit quibusdam quo quasi sequi hic nesciunt
-                    eaque facere velit.</p>
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt pariatur quam vero, nesciunt ea quo
-                    cumque similique odio fugiat ipsam delectus neque exercitationem! Doloremque labore eaque nobis
-                    consectetur omnis? Accusantium?</p>
-            </div>
+    <div class="repeat-lines2">
+        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus obcaecati voluptatem.
         </div>
-    </section>
+        <div class="img"><img src="img/hand-2.jpg" alt=""></div>
+    </div>
 
-    <!-- ПОДВАЛ -->
-    <footer>
-        <div class="footer-content">
-            <!-- Иконки -->
-            <div class="icons">
-                <div class="icon-item"><a href="#"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></div>
-                <div class="icon-item"><a href="#"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></a></div>
-                <div class="icon-item"><a href="#"><i class="fa fa-telegram fa-2x" aria-hidden="true"></i></a></div>
-                <div class="icon-item"><a href="#"><i class="fa fa-vk fa-2x" aria-hidden="true"></i></a></div>
-                <div class="icon-item"><a href="#"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></div>
-            </div>
-
-            <!-- Ссылки в подвале -->
-            <div class="footer-links">
-                <div class="footer-column">
-                    <a href="#">About us</a>
-                    <a href="#">Services</a>
-                    <a href="#">Docs and Tables</a>
-                </div>
-                <div class="footer-column">
-                    <a href="#">Files and Folders</a>
-                    <a href="#">Lists and Collections</a>
-                    <a href="#">People and Animals</a>
-                </div>
-                <div class="footer-column">
-                    <a href="#">Sponsors and Investors</a>
-                    <a href="#">Writers and Readers</a>
-                    <a href="#">Contacts and Other</a>
-                </div>
-            </div>
+    <div class="repeat-lines3">
+        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus obcaecati voluptatem.
         </div>
-    </footer>
+        <div class="img"><img src="img/hand-3.jpg" alt=""></div>
+    </div>
 
-    <!-- Скрипт для работы мобильного меню -->
-    <script>
-        const burger = document.getElementById('burger');
-        const navMenu = document.getElementById('nav-menu');
+    <div class="repeat-lines4">
+        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus obcaecati voluptatem.
+        </div>
+        <div class="img"><img src="img/hand-4.jpg" alt=""></div>
+    </div>
 
-        burger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <div class="circle-line">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+        <div class="circle5"></div>
+    </div>
+
 </body>
 
 </html>
