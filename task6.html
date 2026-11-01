@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 6. Bootstrap</title>
+    <!-- Подключение Bootstrap 5 (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Небольшой отступ, чтобы блоки не прилипали к краям */
+        body {
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ЧАСТЬ 1: ФОРМЫ, КНОПКИ, ТАБЛИЦЫ -->
+    <div class="container section">
+        <h2 class="mb-4">Формы и кнопки</h2>
+
+        <!-- Горизонтальная форма -->
+        <form class="row g-3 align-items-center mb-5">
+            <div class="col-auto">
+                <label for="inlineEmail" class="col-form-label fw-bold">Email</label>
+            </div>
+            <div class="col-auto">
+                <input type="email" class="form-control" id="inlineEmail" placeholder="Введите email" required>
+            </div>
+            <div class="col-auto">
+                <label for="inlinePassword" class="col-form-label fw-bold">Пароль</label>
+            </div>
+            <div class="col-auto">
+                <input type="password" class="form-control" id="inlinePassword" placeholder="Пароль" required>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">Войти</button>
+            </div>
+        </form>
+
+        <!-- Вертикальная форма с подсказкой -->
+        <form class="mb-5" style="max-width: 400px;">
+            <div class="mb-3">
+                <label for="verticalEmail" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="verticalEmail" placeholder="Введите email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                <div class="form-text">Пример строки с подсказкой</div>
+            </div>
+            <div class="mb-3">
+                <label for="verticalPassword" class="form-label fw-bold">Пароль</label>
+                <input type="password" class="form-control" id="verticalPassword" placeholder="Пароль">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkMe">
+                <label class="form-check-label" for="checkMe">Чекбокс</label>
+            </div>
+            <button type="submit" class="btn btn-success">Войти</button>
+        </form>
+
+        <!-- Кнопки -->
+        <div class="d-flex gap-2 flex-wrap mb-5">
+            <button type="button" class="btn btn-light border">Стандартная</button>
+            <button type="button" class="btn btn-primary">Основная</button>
+            <button type="button" class="btn btn-success">Подтвердить</button>
+            <button type="button" class="btn btn-info text-white">Уведомление</button>
+            <button type="button" class="btn btn-warning text-white">Внимание</button>
+            <button type="button" class="btn btn-danger">Отмена</button>
+            <a href="#" class="btn btn-link">Ссылка</a>
+        </div>
+
+        <!-- Таблицы -->
+        <h3>Таблица 1 (простая)</h3>
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td>Иван</td>
+                    <td>Николайчук</td>
+                    <td>ivan@example.com</td>
+                </tr>
+                <tr>
+                    <td>Мария</td>
+                    <td>Иванова</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>Юлия</td>
+                    <td>Петренко</td>
+                    <td>julia@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Таблица 2 (с заголовками)</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Почта</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Иван</td>
+                    <td>Николайчук</td>
+                    <td>ivan@example.com</td>
+                </tr>
+                <tr>
+                    <td>Мария</td>
+                    <td>Иванова</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>Юлия</td>
+                    <td>Петренко</td>
+                    <td>julia@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Таблица 3 (цветная)</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>Имя (active)</th>
+                    <th class="table-success">Фамилия (success)</th>
+                    <th class="table-info">Почта (info)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-warning">Иван (warning)</td>
+                    <td>Николайчук</td>
+                    <td class="table-danger">ivan@example.com (danger)</td>
+                </tr>
+                <tr>
+                    <td>Мария</td>
+                    <td>Иванова</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>Юлия</td>
+                    <td class="table-active">Петренко (active)</td>
+                    <td>julia@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ЧАСТЬ 2: КАРТОЧКИ И МОДАЛЬНОЕ ОКНО -->
+    <div class="container section">
+        <h2 class="mb-4">Карточки (Card)</h2>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Карточка 1 -->
+            <div class="col">
+                <div class="card h-100">
+                    <!-- Замените картинку на свою (пропорции 800x600 или 1600x1200) -->
+                    <img src="img/cats1.jpg" class="card-img-top img-fluid" alt="Котенок 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Название карточки</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <!-- Кнопка вызывает модальное окно -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Go somewhere
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/cats2.jpg" class="card-img-top img-fluid" alt="Котенок 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Название карточки</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/cats3.jpg" class="card-img-top img-fluid" alt="Котенок 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Название карточки</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО (Скрыто по умолчанию) -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="modalEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="modalEmail">
+                            <div class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="modalPassword">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="modalCheck">
+                            <label class="form-check-label" for="modalCheck">Check me out</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение JS Bootstrap (нужно для работы модального окна) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
